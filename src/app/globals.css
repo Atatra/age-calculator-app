@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  background-color: theme("backgroundColor.neutral.lGrey");
+}
+.card {
+  background-color: theme("colors.neutral.white");
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px 10px 50px;
+  padding: 20px 15px;
+}

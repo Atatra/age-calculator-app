@@ -35,7 +35,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable}`}>{children}</body>
+      <body
+        className={`${poppins.variable} min-h-screen flex justify-center
+    items-center`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
