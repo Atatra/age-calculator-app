@@ -2,16 +2,52 @@
 import { createRef, useState } from "react";
 import Input from "@/components/Input";
 import iconArrow from "../../public/images/icon-arrow.svg";
+import infoSchema from "@/lib/formSchema";
+import { ZodError } from "zod";
 
+interface ErrorMap {
+  day: string | null;
+  month: string | null;
+  year: string | null;
+  date: string | null;
+}
 export default function Home() {
+  const [errorMap, setErrorMap] = useState<ErrorMap>({
+    day: null,
+    month: null,
+    year: null,
+    date: null,
+  });
+
   const handleSubmit = async (formData: FormData) => {
-    console.log(formData.get("day"));
+    const day = parseFloat(formData.get("day")?.toString() || "");
+    const month = parseFloat(formData.get("month")?.toString() || "");
+    const year = parseFloat(formData.get("year")?.toString() || "");
+
     const FormData = {
-      day: parseFloat(formData.get("day")?.toString() || ""),
-      month: parseFloat(formData.get("month")?.toString() || ""),
-      year: parseFloat(formData.get("year")?.toString() || ""),
+      day: day,
+      month: month,
+      year: year,
+      date: `${year}-${month < 10 ? "0" + month : month}-${
+        day < 10 ? "0" + day : day
+      }`,
     };
-    console.log(FormData);
+
+    const valSchema = infoSchema.safeParse(FormData);
+
+    /** Error mapping is done here to avoid bugs later on */
+    const errors = valSchema.error?.format();
+    setErrorMap({
+      day: errors?.day ? errors.day._errors[0] : null,
+      month: errors?.month ? errors.month._errors[0] : null,
+      year: errors?.year ? errors.year._errors[0] : null,
+      date: errors?.date ? errors.date._errors[0] : null,
+    });
+
+    if (valSchema.success) {
+      const data = valSchema.data;
+      console.log(data);
+    }
   };
 
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
