@@ -20,7 +20,7 @@ export default function Home() {
             <hr />
             <button
               type="submit"
-              className="p-4 rounded-full bg-primary-purple relative top-[-27px]
+              className="p-4 rounded-full bg-primary-purple hover:bg-neutral-offBlack relative top-[-27px]
               sm:top-[-42px]"
             >
               <img
