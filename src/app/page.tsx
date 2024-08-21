@@ -3,8 +3,8 @@ import iconArrow from "../../public/images/icon-arrow.svg";
 
 export default function Home() {
   return (
-    <main className="w-full font-poppins flex justify-center">
-      <section className="card max-w-[350px] sm:max-w-[500px]">
+    <main className="flex justify-center min-h-screen w-full font-poppins">
+      <section className="card max-w-[350px] sm:min-w-[500px] xl:min-w-[800px]">
         <form>
           <div className="flex gap-3">
             <Input id="day" name="day" placeholder="DD" topLabel="DAY" />
@@ -29,13 +29,13 @@ export default function Home() {
         </form>
 
         <strong className="text-5xl font-extrabold">
-          <span className="text-primary-purple">38</span> years
+          <span className="text-primary-purple">--</span> years
         </strong>
         <strong className="text-5xl font-extrabold">
-          <span className="text-primary-purple">3</span> months
+          <span className="text-primary-purple">--</span> months
         </strong>
         <strong className="text-5xl font-extrabold">
-          <span className="text-primary-purple">26</span> days
+          <span className="text-primary-purple">--</span> days
         </strong>
       </section>
     </main>
