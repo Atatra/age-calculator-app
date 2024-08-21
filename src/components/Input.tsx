@@ -7,7 +7,11 @@ interface Props {
 const Input = ({ id, name, placeholder, topLabel }: Props) => {
   return (
     <div className="flex flex-col max-w-[75px]">
-      <label htmlFor="day" className="tracking-[0.2em] text-sm">
+      <label
+        htmlFor="day"
+        className="tracking-[0.2em] text-xs text-neutral-sGrey font-bold
+        pb-1"
+      >
         {topLabel}
       </label>
       <input

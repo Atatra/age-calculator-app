@@ -3,14 +3,12 @@
 @tailwind utilities;
 
 :root {
-  background-color: theme("backgroundColor.neutral.lGrey");
+  background-color: theme("backgroundColor.neutral.offWhite");
 }
 .card {
   background-color: theme("colors.neutral.white");
   display: flex;
   flex-direction: column;
-  align-self: center;
-  border-radius: 10px 10px 50px;
-  padding: 20px 20px;
-  margin: 0px 10px;
+  border-radius: 10px 10px 85px;
+  padding: 40px 20px;
 }

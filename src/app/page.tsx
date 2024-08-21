@@ -3,8 +3,12 @@ import iconArrow from "../../public/images/icon-arrow.svg";
 
 export default function Home() {
   return (
-    <main className="flex justify-center min-h-screen w-full font-poppins">
-      <section className="card max-w-[350px] sm:min-w-[500px] xl:min-w-[800px]">
+    <main className="flex justify-center w-full font-poppins sm:min-h-screen">
+      <section
+        className="card mt-20 my-10 max-w-[350px] sm:min-w-[500px] sm:self-center
+        xl:min-w-[800px]
+      "
+      >
         <form>
           <div className="flex gap-3">
             <Input id="day" name="day" placeholder="DD" topLabel="DAY" />
@@ -28,13 +32,13 @@ export default function Home() {
           </div>
         </form>
 
-        <strong className="text-5xl font-extrabold">
+        <strong className="text-[2.6rem]/[2.5rem] font-extrabold italic">
           <span className="text-primary-purple">--</span> years
         </strong>
-        <strong className="text-5xl font-extrabold">
+        <strong className="text-[2.6rem]/[2.5rem] font-extrabold italic">
           <span className="text-primary-purple">--</span> months
         </strong>
-        <strong className="text-5xl font-extrabold">
+        <strong className="text-[2.6rem]/[2.5rem] font-extrabold italic">
           <span className="text-primary-purple">--</span> days
         </strong>
       </section>
