@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <main className="flex justify-center w-full font-poppins sm:min-h-screen">
       <section
-        className="card mt-20 my-10 max-w-[350px] sm:min-w-[750px] sm:self-center
-        sm:px-[50px] sm:py-[50px]
+        className="card mt-20 my-10 max-w-[350px] sm:min-w-[600px] lg:min-w-[750px] sm:self-center
+        sm:px-[50px] sm:py-[50px] sm:mt-10
       "
       >
         <form>
@@ -20,13 +20,15 @@ export default function Home() {
             <hr />
             <button
               type="submit"
-              className="p-3 rounded-full bg-primary-purple relative top-[-24px]"
+              className="p-4 rounded-full bg-primary-purple relative top-[-27px]
+              sm:top-[-42px]"
             >
               <img
-                width={26}
-                height={26}
+                width={22}
+                height={22}
                 src={iconArrow.src}
                 alt="Submit icon arrow"
+                className="sm:w-[50px] sm:h-[50px]"
               />
             </button>
           </div>

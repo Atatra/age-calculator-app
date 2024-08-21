@@ -19,6 +19,6 @@ input[type="number"] {
   background-color: theme("colors.neutral.white");
   display: flex;
   flex-direction: column;
-  border-radius: 10px 10px 85px;
+  border-radius: 10px 10px 25%;
   padding: 40px 20px;
 }

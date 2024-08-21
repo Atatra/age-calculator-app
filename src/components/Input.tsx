@@ -19,7 +19,7 @@ const Input = ({ id, name, placeholder, topLabel }: Props) => {
         placeholder={placeholder}
         id={id}
         name={name}
-        className="border-2 rounded-md text-[1rem] sm:text-inputs
+        className="border-2 rounded-sm text-[1rem] sm:text-inputs
         font-bold pl-[0.85rem] py-2 outline-primary-purple"
       />
     </div>
