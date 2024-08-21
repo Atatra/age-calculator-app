@@ -1,7 +1,10 @@
+"use client";
+import { useState } from "react";
 import Input from "@/components/Input";
 import iconArrow from "../../public/images/icon-arrow.svg";
 
 export default function Home() {
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
   return (
     <main className="flex justify-center w-full font-poppins sm:min-h-screen">
       <section
@@ -11,9 +14,30 @@ export default function Home() {
       >
         <form>
           <div className="flex gap-3">
-            <Input id="day" name="day" placeholder="DD" topLabel="DAY" />
-            <Input id="month" name="month" placeholder="MM" topLabel="MONTH" />
-            <Input id="year" name="year" placeholder="YYYY" topLabel="YEAR" />
+            <Input
+              id="day"
+              name="day"
+              placeholder="DD"
+              topLabel="DAY"
+              minValue={0}
+              maxValue={31}
+            />
+            <Input
+              id="month"
+              name="month"
+              placeholder="MM"
+              topLabel="MONTH"
+              minValue={0}
+              maxValue={12}
+            />
+            <Input
+              id="year"
+              name="year"
+              placeholder="YYYY"
+              topLabel="YEAR"
+              minValue={currentDate.getFullYear() - 120}
+              maxValue={currentDate.getFullYear()}
+            />
           </div>
 
           <div className="text-center sm:text-end mt-12">
