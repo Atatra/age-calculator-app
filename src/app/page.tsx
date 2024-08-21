@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <main className="flex justify-center w-full font-poppins sm:min-h-screen">
       <section
-        className="card mt-20 my-10 max-w-[350px] sm:min-w-[500px] sm:self-center
-        xl:min-w-[800px]
+        className="card mt-20 my-10 max-w-[350px] sm:min-w-[650px] sm:self-center
+        
       "
       >
         <form>
