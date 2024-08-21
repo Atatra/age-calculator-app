@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <main className="flex justify-center w-full font-poppins sm:min-h-screen">
       <section
-        className="card mt-20 my-10 max-w-[350px] sm:min-w-[650px] sm:self-center
-        
+        className="card mt-20 my-10 max-w-[350px] sm:min-w-[750px] sm:self-center
+        sm:px-[50px] sm:py-[50px]
       "
       >
         <form>
@@ -32,13 +32,22 @@ export default function Home() {
           </div>
         </form>
 
-        <strong className="text-[2.6rem]/[2.5rem] font-extrabold italic">
-          <span className="text-primary-purple">--</span> years
+        <strong
+          className="text-[2.6rem]/[2.5rem] font-extrabold
+          italic sm:text-7xl"
+        >
+          <span className="text-primary-purple">-- </span> years
         </strong>
-        <strong className="text-[2.6rem]/[2.5rem] font-extrabold italic">
+        <strong
+          className="text-[2.6rem]/[2.5rem] font-extrabold
+          italic sm:text-7xl"
+        >
           <span className="text-primary-purple">--</span> months
         </strong>
-        <strong className="text-[2.6rem]/[2.5rem] font-extrabold italic">
+        <strong
+          className="text-[2.6rem]/[2.5rem] font-extrabold
+          italic sm:text-7xl"
+        >
           <span className="text-primary-purple">--</span> days
         </strong>
       </section>
