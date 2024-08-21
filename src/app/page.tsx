@@ -1,9 +1,19 @@
 "use client";
-import { useState } from "react";
+import { createRef, useState } from "react";
 import Input from "@/components/Input";
 import iconArrow from "../../public/images/icon-arrow.svg";
 
 export default function Home() {
+  const handleSubmit = async (formData: FormData) => {
+    console.log(formData.get("day"));
+    const FormData = {
+      day: parseFloat(formData.get("day")?.toString() || ""),
+      month: parseFloat(formData.get("month")?.toString() || ""),
+      year: parseFloat(formData.get("year")?.toString() || ""),
+    };
+    console.log(FormData);
+  };
+
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   return (
     <main className="flex justify-center w-full font-poppins sm:min-h-screen">
@@ -12,14 +22,14 @@ export default function Home() {
         sm:px-[50px] sm:py-[50px] sm:mt-10
       "
       >
-        <form>
+        <form action={handleSubmit}>
           <div className="flex gap-3">
             <Input
               id="day"
               name="day"
               placeholder="DD"
               topLabel="DAY"
-              minValue={0}
+              minValue={1}
               maxValue={31}
             />
             <Input
@@ -27,7 +37,7 @@ export default function Home() {
               name="month"
               placeholder="MM"
               topLabel="MONTH"
-              minValue={0}
+              minValue={1}
               maxValue={12}
             />
             <Input

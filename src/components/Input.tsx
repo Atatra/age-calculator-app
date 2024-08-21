@@ -1,4 +1,4 @@
-import { KeyboardEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 
 interface Props {
   id: string;
@@ -18,10 +18,14 @@ const Input = ({
 }: Props) => {
   const handleKeyDown = ({ target, code }: KeyboardEvent<HTMLInputElement>) => {
     const value = (target as HTMLInputElement).value;
-    if (code === "ArrowLeft" && (value === "" || value === "0")) {
-      (target as HTMLInputElement).value = "0";
-    } else if (code === "ArrowRight" && (value === "" || value === "0"))
+    if (code === "ArrowLeft" && value === "") {
+      (target as HTMLInputElement).value = minValue.toString();
+    } else if (code === "ArrowRight" && value === "")
       (target as HTMLInputElement).value = maxValue.toString();
+  };
+
+  const removeZeros = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    if (target.value !== "") target.value = (+target.value).toString();
   };
 
   return (
@@ -43,6 +47,7 @@ const Input = ({
         className="border-2 rounded-sm text-[1rem] sm:text-inputs
         font-bold pl-[0.85rem] py-2 outline-primary-purple"
         onKeyDown={handleKeyDown}
+        onChange={removeZeros}
       />
     </div>
   );
