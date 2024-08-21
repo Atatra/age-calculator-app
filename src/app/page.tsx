@@ -3,7 +3,7 @@ import { createRef, useState } from "react";
 import Input from "@/components/Input";
 import iconArrow from "../../public/images/icon-arrow.svg";
 import infoSchema from "@/lib/formSchema";
-import { ZodError } from "zod";
+import { date, ZodError } from "zod";
 
 interface ErrorMap {
   day: string | null;
@@ -46,7 +46,8 @@ export default function Home() {
 
     if (valSchema.success) {
       const data = valSchema.data;
-      console.log(data);
+      const elapsedMs = Date.now() - new Date(`${data.date}`).getTime();
+      const elapsedSeconds = Math.round(elapsedMs / 1000);
     }
   };
 
@@ -86,7 +87,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="text-center sm:text-end mt-12">
+          <div className="text-center sm:text-end mt-12 mb-[-12px] sm:mb-[-42px]">
             <hr />
             <button
               type="submit"
