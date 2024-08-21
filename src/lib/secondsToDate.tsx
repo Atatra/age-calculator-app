@@ -1,4 +1,4 @@
-const isLeapYear = (year: number) => {
+export const isLeapYear = (year: number) => {
   if (year >= 1582) {
     if (year % 100 === 0) return year % 400 === 0;
     else {
@@ -9,4 +9,7 @@ const isLeapYear = (year: number) => {
 };
 
 //60 * 60 * 24 * 365
-const secondsToDate = (elapsedSeconds: number) => {};
+export const secondsToDate = (elapsedSeconds: number) => {
+  const noYears = 60 * 60 * 24;
+  //const years = elapsedSeconds - //
+};

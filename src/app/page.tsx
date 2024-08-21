@@ -47,7 +47,20 @@ export default function Home() {
     if (valSchema.success) {
       const data = valSchema.data;
       const elapsedMs = Date.now() - new Date(`${data.date}`).getTime();
+
       const elapsedSeconds = Math.round(elapsedMs / 1000);
+
+      const yearsRem = elapsedSeconds % (60 * 60 * 24 * 365);
+      const years = (elapsedSeconds - yearsRem) / (60 * 60 * 24 * 365);
+
+      const monthsRem = yearsRem % (60 * 60 * 24 * 31);
+      const months = (yearsRem - monthsRem) / (60 * 60 * 24 * 31);
+
+      const daysRem = monthsRem % (60 * 60 * 24);
+      const days = (monthsRem - daysRem) / (60 * 60 * 24);
+
+      console.log(yearsRem, monthsRem, daysRem);
+      console.log(years, months, days);
     }
   };
 
