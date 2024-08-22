@@ -20,6 +20,11 @@ const poppins = localFont({
       style: "normal",
     },
     {
+      path: "../../public/fonts/Poppins-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
       path: "../../public/fonts/Poppins-ExtraBoldItalic.ttf",
       weight: "800",
       style: "italic",

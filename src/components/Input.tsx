@@ -7,6 +7,7 @@ interface Props {
   topLabel: string;
   minValue: number;
   maxValue: number;
+  error: string | null;
 }
 const Input = ({
   id,
@@ -15,6 +16,7 @@ const Input = ({
   topLabel,
   minValue,
   maxValue,
+  error,
 }: Props) => {
   const handleKeyDown = ({ target, code }: KeyboardEvent<HTMLInputElement>) => {
     const value = (target as HTMLInputElement).value;
@@ -32,8 +34,8 @@ const Input = ({
     <div className="flex flex-col max-w-[75px] sm:min-w-[125px]">
       <label
         htmlFor="day"
-        className="tracking-[0.2em] text-[0.6rem]/[1rem] sm:text-xs
-        text-neutral-sGrey font-bold pb-1"
+        className={`tracking-[0.2em] text-[0.6rem]/[1rem] sm:text-xs
+        text-neutral-sGrey font-bold pb-2 ${error && "errorText"}`}
       >
         {topLabel}
       </label>
@@ -44,11 +46,12 @@ const Input = ({
         name={name}
         min={minValue}
         max={maxValue}
-        className="border-2 rounded-sm text-[1rem] sm:text-inputs
-        font-bold pl-[0.85rem] py-2 outline-primary-purple"
+        className={`border-2 rounded-lg text-[1rem] sm:text-inputs
+        font-bold pl-[0.85rem] py-2 outline-primary-purple`}
         onKeyDown={handleKeyDown}
         onChange={removeZeros}
       />
+      {error && <p className="errorText text-xs mt-2 italic">{error}</p>}
     </div>
   );
 };

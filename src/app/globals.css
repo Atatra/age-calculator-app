@@ -22,3 +22,11 @@ input[type="number"] {
   border-radius: 10px 10px 25%;
   padding: 40px 20px;
 }
+
+.errorText {
+  color: theme("colors.primary.lred");
+}
+
+.errorBorder {
+  outline-color: theme("colors.primary.lred");
+}

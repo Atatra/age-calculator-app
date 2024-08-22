@@ -1,9 +1,9 @@
 "use client";
-import { createRef, useState } from "react";
+import { useState } from "react";
 import Input from "@/components/Input";
 import iconArrow from "../../public/images/icon-arrow.svg";
 import infoSchema from "@/lib/formSchema";
-import { date, ZodError } from "zod";
+import { getDate } from "@/lib/secondsToDate";
 
 interface ErrorMap {
   day: string | null;
@@ -11,12 +11,25 @@ interface ErrorMap {
   year: string | null;
   date: string | null;
 }
+interface DateFromBirth {
+  years: string | null;
+  months: string | null;
+  days: string | null;
+}
+
 export default function Home() {
+  const [currentDate, setCurrentDate] = useState<Date>(() => new Date());
+
   const [errorMap, setErrorMap] = useState<ErrorMap>({
     day: null,
     month: null,
     year: null,
     date: null,
+  });
+  const [date, setDate] = useState<DateFromBirth>({
+    years: null,
+    months: null,
+    days: null,
   });
 
   const handleSubmit = async (formData: FormData) => {
@@ -46,25 +59,15 @@ export default function Home() {
 
     if (valSchema.success) {
       const data = valSchema.data;
-      const elapsedMs = Date.now() - new Date(`${data.date}`).getTime();
-
-      const elapsedSeconds = Math.round(elapsedMs / 1000);
-
-      const yearsRem = elapsedSeconds % (60 * 60 * 24 * 365);
-      const years = (elapsedSeconds - yearsRem) / (60 * 60 * 24 * 365);
-
-      const monthsRem = yearsRem % (60 * 60 * 24 * 31);
-      const months = (yearsRem - monthsRem) / (60 * 60 * 24 * 31);
-
-      const daysRem = monthsRem % (60 * 60 * 24);
-      const days = (monthsRem - daysRem) / (60 * 60 * 24);
-
-      console.log(yearsRem, monthsRem, daysRem);
-      console.log(years, months, days);
+      const { years, months, days } = getDate(data.date);
+      setDate({
+        years: years.toString(),
+        months: months.toString(),
+        days: days.toString(),
+      });
     }
   };
 
-  const [currentDate, setCurrentDate] = useState<Date>(new Date());
   return (
     <main className="flex justify-center w-full font-poppins sm:min-h-screen">
       <section
@@ -73,7 +76,7 @@ export default function Home() {
       "
       >
         <form action={handleSubmit}>
-          <div className="flex gap-3">
+          <div className="flex gap-3 lg:gap-[25px]">
             <Input
               id="day"
               name="day"
@@ -81,6 +84,7 @@ export default function Home() {
               topLabel="DAY"
               minValue={1}
               maxValue={31}
+              error={errorMap.day}
             />
             <Input
               id="month"
@@ -89,6 +93,7 @@ export default function Home() {
               topLabel="MONTH"
               minValue={1}
               maxValue={12}
+              error={errorMap.month}
             />
             <Input
               id="year"
@@ -97,8 +102,15 @@ export default function Home() {
               topLabel="YEAR"
               minValue={currentDate.getFullYear() - 120}
               maxValue={currentDate.getFullYear()}
+              error={errorMap.year}
             />
           </div>
+          {!errorMap.month &&
+            !errorMap.day &&
+            !errorMap.year &&
+            errorMap.date && (
+              <p className="mt-2 text-xs italic errorText">{errorMap.date}</p>
+            )}
 
           <div className="text-center sm:text-end mt-12 mb-[-12px] sm:mb-[-42px]">
             <hr />
@@ -122,19 +134,28 @@ export default function Home() {
           className="text-[2.6rem]/[2.5rem] font-extrabold
           italic sm:text-7xl"
         >
-          <span className="text-primary-purple">-- </span> years
+          <span className="text-primary-purple">
+            {date.years ? date.years : "--"}
+          </span>{" "}
+          year{parseInt(date.years ?? "") > 1 ? "s" : ""}
         </strong>
         <strong
           className="text-[2.6rem]/[2.5rem] font-extrabold
           italic sm:text-7xl"
         >
-          <span className="text-primary-purple">--</span> months
+          <span className="text-primary-purple">
+            {date.months ? date.months : "--"}
+          </span>{" "}
+          month{parseInt(date.months ?? "") > 1 ? "s" : ""}
         </strong>
         <strong
           className="text-[2.6rem]/[2.5rem] font-extrabold
           italic sm:text-7xl"
         >
-          <span className="text-primary-purple">--</span> days
+          <span className="text-primary-purple">
+            {date.days ? date.days : "--"}
+          </span>{" "}
+          day{parseInt(date.days ?? "") > 1 ? "s" : ""}
         </strong>
       </section>
     </main>
