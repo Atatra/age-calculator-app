@@ -59,7 +59,7 @@ export default function Home() {
 
   return (
     <main className="flex justify-center w-full font-poppins sm:min-h-screen">
-      <section
+      <div
         className="card mt-20 my-10 max-w-[350px] sm:min-w-[600px] lg:min-w-[750px] sm:self-center
         sm:px-[50px] sm:py-[50px] sm:mt-10
       "
@@ -163,7 +163,7 @@ export default function Home() {
           </span>{" "}
           day{(date.days ?? 0) > 1 ? "s" : ""}
         </strong>
-      </section>
+      </div>
     </main>
   );
 }
