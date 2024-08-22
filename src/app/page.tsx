@@ -4,18 +4,7 @@ import Input from "@/components/Input";
 import iconArrow from "../../public/images/icon-arrow.svg";
 import infoSchema from "@/lib/formSchema";
 import { getDate } from "@/lib/secondsToDate";
-
-interface ErrorMap {
-  day: string | null;
-  month: string | null;
-  year: string | null;
-  date: string | null;
-}
-interface DateFromBirth {
-  years: string | null;
-  months: string | null;
-  days: string | null;
-}
+import { ErrorMap, DateFromBirth, Odometer } from "@/lib/types";
 
 export default function Home() {
   const [currentDate, setCurrentDate] = useState<Date>(() => new Date());
@@ -61,9 +50,9 @@ export default function Home() {
       const data = valSchema.data;
       const { years, months, days } = getDate(data.date);
       setDate({
-        years: years.toString(),
-        months: months.toString(),
-        days: days.toString(),
+        years: years,
+        months: months,
+        days: days,
       });
     }
   };
@@ -134,28 +123,45 @@ export default function Home() {
           className="text-[2.6rem]/[2.5rem] font-extrabold
           italic sm:text-7xl"
         >
-          <span className="text-primary-purple">
-            {date.years ? date.years : "--"}
+          <span
+            className={`text-primary-purple ${
+              date.years !== null && "odometerYear"
+            }`}
+            style={{ "--year": date.years } as Odometer}
+          >
+            {date.years === null && "--"}
           </span>{" "}
-          year{parseInt(date.years ?? "") > 1 ? "s" : ""}
+          year{(date.years ?? 0) > 1 ? "s" : ""}
         </strong>
+
         <strong
           className="text-[2.6rem]/[2.5rem] font-extrabold
           italic sm:text-7xl"
         >
-          <span className="text-primary-purple">
-            {date.months ? date.months : "--"}
+          <span
+            className={`text-primary-purple ${
+              date.months !== null && "odometerMonth"
+            }`}
+            style={{ "--month": date.months } as Odometer}
+          >
+            {date.months === null && "--"}
           </span>{" "}
-          month{parseInt(date.months ?? "") > 1 ? "s" : ""}
+          month{(date.months ?? 0) > 1 ? "s" : ""}
         </strong>
+
         <strong
           className="text-[2.6rem]/[2.5rem] font-extrabold
           italic sm:text-7xl"
         >
-          <span className="text-primary-purple">
-            {date.days ? date.days : "--"}
+          <span
+            className={`text-primary-purple ${
+              date.years !== null && "odometerDay"
+            }`}
+            style={{ "--day": date.days } as Odometer}
+          >
+            {date.days === null && "--"}
           </span>{" "}
-          day{parseInt(date.days ?? "") > 1 ? "s" : ""}
+          day{(date.days ?? 0) > 1 ? "s" : ""}
         </strong>
       </section>
     </main>

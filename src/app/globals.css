@@ -30,3 +30,49 @@ input[type="number"] {
 .errorBorder {
   outline-color: theme("colors.primary.lred");
 }
+
+@property --year {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --month {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --day {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+/** I should probably generalized these classes **/
+.odometerYear {
+  transition: --year 0.5s;
+  counter-set: year var(--year);
+}
+
+.odometerMonth {
+  transition: --month 0.5s;
+  counter-set: month var(--month);
+}
+
+.odometerDay {
+  transition: --day 0.5s;
+  counter-set: day var(--day);
+}
+
+.odometerYear::after {
+  content: counter(year);
+}
+
+.odometerMonth::after {
+  content: counter(month);
+}
+
+.odometerDay::after {
+  content: counter(day);
+}
