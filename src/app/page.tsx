@@ -121,7 +121,7 @@ export default function Home() {
 
         <strong
           className="text-[2.6rem]/[2.5rem] font-extrabold
-          italic sm:text-7xl"
+          italic sm:text-8xl"
         >
           <span
             className={`text-primary-purple ${
@@ -136,7 +136,7 @@ export default function Home() {
 
         <strong
           className="text-[2.6rem]/[2.5rem] font-extrabold
-          italic sm:text-7xl"
+          italic sm:text-8xl"
         >
           <span
             className={`text-primary-purple ${
@@ -151,7 +151,7 @@ export default function Home() {
 
         <strong
           className="text-[2.6rem]/[2.5rem] font-extrabold
-          italic sm:text-7xl"
+          italic sm:text-8xl"
         >
           <span
             className={`text-primary-purple ${
