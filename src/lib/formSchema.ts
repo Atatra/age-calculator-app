@@ -15,9 +15,17 @@ const infoSchema = z.object({
   year: z
     .number({ message: "Year is required" })
     .positive({ message: "Must be a valid year" })
-    .max(new Date().getFullYear() + 1, { message: "Must be in the pastr" }),
+    .max(new Date().getFullYear() + 1, { message: "Must be in the past" }),
 
-  date: z.string().date("Must be a valid date"),
+  date: z
+    .string()
+    .date("Must be a valid date")
+    .refine(
+      (val) => {
+        return new Date(val) < new Date();
+      },
+      { message: "Date must be in the past" }
+    ),
 });
 
 export default infoSchema;
